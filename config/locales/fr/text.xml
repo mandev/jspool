@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xproperties>
+
+    <property key="utils.message" value="Message" />
+    <property key="utils.error" value="Erreur" />
+    <property key="LookAndFeel.NotSupported" value="Ce look and feel n'est pas supporté sur cette plateforme" />
+
+ <!-- FILES MENU LABELS -->
+    <property key="Files.txt" value="$Fichiers" />
+    <property key="StartAllChannels.txt" value="Démarrer tous les canaux" />
+    <property key="StopAllChannels.txt" value="Arréter tous les canaux" />
+    <property key="ShowLogArea.txt" value="Afficher la fenêtre de log" />
+    <property key="ResetLogArea.txt" value="Effacer la fenêtre de log" />
+    <property key="Preferences.txt" value="Préférences" />
+    <property key="Quit.txt" value="Quitter" />
+ 
+ <!-- CHANNEL MENU LABELS -->
+    <property key="Channel.txt" value="$Canal" />
+    <property key="NewChannel.txt" value="Nouveau..." />
+    <property key="CopyChannel.txt" value="Copier..." />
+    <property key="ModifyChannel.txt" value="Modifier..." />
+    <property key="StartChannel.txt" value="Démarrer" />
+    <property key="StopChannel.txt" value="Arréter" />
+    <property key="DisableChannel.txt" value="Désactiver" />
+    <property key="EnableChannel.txt" value="Activer" />
+    <property key="DestroyChannel.txt" value="Détruire" />
+ 
+ <!-- MENU LABELS -->
+    <property key="Licence.txt" value="Enregistrement..." />
+    <property key="Help.txt" value="$Aide" />
+    <property key="About.txt" value="Au sujet..." />
+    <property key="AboutPlugins.txt" value="Au sujet des plugins..." />
+
+ <!-- Plugins -->
+    <property key="about.plugins.title" value="Au sujet des plugins" />
+    <property key="about.plugins.name" value="Nom" />
+    <property key="about.plugins.version" value="Version" />
+    <property key="about.plugins.author" value="Auteur" />
+ 
+ <!-- Misc -->
+    <property key="about.jspool.title" value="Au sujet..." />
+    <property key="general.ok.button" value="OK" />
+    <property key="general.cancel.button" value="Annuler" />
+    <property key="general.select.button" value="Sélectionner" />
+    <property key="DirectoryDialog.Title" value="Sélecteur de dossier" />
+ 
+ <!-- LICENCES MESSAGES --> 
+    <property key="RegisterLicense" value="Enregistrer la licence" />
+    <property key="LicenseKey" value="Clef d'enregistrement" />
+    <property key="QuitApp" value="Quitter l'application" />
+    <property key="BadLicense" value="Cette clef d'enregistrement n'est pas valide." />
+ 
+ <!-- PREFS MESSAGES -->
+    <property key="preferences.locale" value="Langage" />
+    <property key="preferences.lf" value="Apparence" />
+ 
+ <!-- MAINFRAME MESSAGES -->
+    <property key="mainframe.loadConfig" value="Chargement de la configuration" />
+    <property key="mainframe.datamodel.id" value="Nom du canal" />
+    <property key="mainframe.datamodel.source" value="Entrée" />
+    <property key="mainframe.datamodel.mode" value="Sortie" />
+    <property key="mainframe.datamodel.status" value="Etat" />
+ 
+ <!-- CHANNEL MESSAGES -->
+    <property key="channel.stop" value="Arrété" />
+    <property key="channel.start" value="Démarrage" />
+    <property key="channel.active" value="Actif" />
+    <property key="channel.failed" value="ERREUR" />
+    <property key="channel.run" value="En cours" />
+    <property key="channel.down" value="Réception" />
+    <property key="channel.up" value="Emission" />
+    <property key="channel.disable" value="Désactivé" />
+
+    <property key="channel.run1" value="Le répertoire {0} n''existe pas" />
+    <property key="channel.run2" value="{0} n'est pas un répertoire" />
+
+    <property key="channel.process1" value="{0} est de taille nulle" />
+    <property key="channel.process3" value="{0} détecté" />
+    <property key="channel.process4" value="{0} n'est pas un répertoire" />
+    <property key="channel.process5" value="Erreur de traitement pour {0} " />
+    <property key="channel.process6" value="{0} en cours de stabilisation" />
+    <property key="channel.process7" value="Suppression du sous répertoire : {0}" />
+
+    <property key="channel.accept1" value="{0} exclu par le filtre" />
+    <property key="channel.doexec1" value="Exécution de : {0}" />
+    <property key="channel.purge1" value="{0} supprimé" />
+
+ <!-- CHANNEL PROPERTIES MESSAGES -->
+    <property key="chprefs.title" value="Préférences" />
+
+ <!-- CHANNEL PROPERTIES MESSAGES -->
+    <property key="channel.title" value="Propriété du canal" />
+    <property key="channel.message1" value="Inclure les sous-répertoires" />
+    <property key="channel.message2" value="Traiter les fichiers de taille nulle" />
+    <property key="channel.message3" value="Démarrer automatiquement" />
+
+    <property key="channel.name" value="Nom" />
+    <property key="channel.filter" value="Filtre" />
+    <property key="channel.tempo" value="Temporisation" />
+    <property key="channel.stability" value="Stabilité" />
+    <property key="channel.maxfiles" value="Fichiers max." /> 
+    <property key="channel.delsubdirdelay" value="Suppression sous-rép." />
+ 
+    <property key="channel.regexp" value="(Regexp PERL)" />
+    <property key="channel.secondes" value="(Secondes)" />
+    <property key="channel.periods" value="(Périodes)" />
+    <property key="channel.zerofiles" value="(0 = Tous les fichiers)" />
+
+    <property key="channel.warning1" value="Le nom du canal doit comporter au moins 2 caractères" />
+    <property key="channel.warning2" value="La syntaxe du filtre est erronée : " />
+    <property key="channel.warning3" value="La temporisation doit être supérieur à 1 milli-seconde" />
+    <property key="channel.warning4" value="La valeur de la temporisation est incorrecte" />
+    <property key="channel.warning5" value="La stabilité doit être supérieur ou égal à 0 période" />
+    <property key="channel.warning6" value="La valeur de la stabilité est incorrecte" />
+    <property key="channel.warning7" value="Le nombre de fichier max doit être supérieur ou égal à 0" />
+    <property key="channel.warning8" value="la valeur du nombre de fichier est incorrecte" />
+    <property key="channel.warning9" value="Le délai de suppression des sous-répertoires vides doit être supérieur ou égal à 0 secondes" />
+    <property key="channel.warning10" value="La valeur du délai de suppression des sous-répertoires vides est incorrecte" />
+
+    <property key="source.input" value="Entrée" />
+    <property key="source.type" value="Type" />
+    <property key="source.srcdir" value="Répertoire source" />
+    <property key="source.checksum" value="Calculer le checksum du fichier pour la stabilité" />
+    <property key="source.sortorder" value="Ordre des fichiers" />
+
+    <property key="source.sort.None" value="Indéfini" />
+    <property key="source.sort.Alpha" value="Traiter par ordre alphabétique" />
+    <property key="source.sort.AlphaInv" value="Traiter par ordre alphabétique inverse" />
+    <property key="source.sort.Date" value="Traiter en premier le fichier le plus récent (LIFO)" />
+    <property key="source.sort.DateInv" value="Traiter en premier le fichier le plus ancien (FIFO)" />
+
+    <property key="target.output" value="Sortie" />
+    <property key="target.type" value="Type" />
+
+ <!-- localmove -->
+    <property key="localmove.trgdir" value="Répertoire cible" />
+    <property key="localmove.subdir" value="Créer les sous-répertoires" />
+    <property key="localmove.cleanchar" value="Nettoyer le nom du fichier" />
+    <property key="localmove.cleanspace" value="Remplacer espace par '_' dans le nom du fichier" />
+    <property key="localmove.rename" value="Renommer le fichier" />
+    <property key="localmove.srcrename" value="Regexp source" />
+    <property key="localmove.trgrename" value="Nom cible" />
+    <property key="localmove.replace" value="Remplacer" />
+    <property key="localmove.by" value="par" />
+
+    <property key="localmove.message1" value="Le nom du répertoire est erroné" />
+    <property key="localmove.message2" value="Création du répertoire {0}" />
+    <property key="localmove.message3" value="Copie du fichier {0} vers {1}" />
+    <property key="localmove.message4" value="Erreur de copie du fichier {0} vers {1}" />
+    <property key="localmove.message5" value="Le regexp source du filtre renommage ne correspond pas au nom du fichier" />
+    <property key="localmove.message6" value="Erreur dans le renommage du fichier {0}" />
+    <property key="localmove.message7" value="Le regexp source du filtre de renommage n'est pas valide" />
+
+ <!-- localexec -->
+    <property key="localexec.exec" value="Exécutable" />
+    <property key="localexec.beforeparams" value="Paramètres avant" />
+    <property key="localexec.afterparams" value="Paramètres après" />
+    <property key="localexec.message4" value="Attendre la fin du sous-processus" />
+    <property key="localexec.message5" value="Supprimer le fichier source" />
+
+ <!-- ftpMove -->
+    <property key="ftpmove.server" value="Serveur" />
+    <property key="ftpmove.user" value="Utilisateur" />
+    <property key="ftpmove.passwd" value="Mot de passe" />
+    <property key="ftpmove.srcdir" value="Répertoire source" />
+    <property key="ftpmove.trgdir" value="Répertoire cible" />
+    <property key="ftpmove.trgext" value="Suffix Temp." />
+    <property key="ftpmove.transfer" value="Mode de transfert" />
+    <property key="ftpmove.cleanchar" value="Nettoyer le nom du fichier" />
+    <property key="ftpmove.cleanspace" value="Remplacer espace par '_' dans le nom du fichier" />
+    <property key="ftpmove.subdir" value="Créer les sous-répertoires" />
+
+    <property key="ftpmove.message1" value="Connecté au serveur FTP : {0}@{1}" />
+    <property key="ftpmove.message2" value="{0} transféré sur le serveur {1}@{2}:{3}" />
+    <property key="ftpmove.message3" value="Erreur de connexion sur le serveur FTP : {0}@{1}" />
+    <property key="ftpmove.message4" value="Répertoire {2} sur le serveur FTP : {0}@{1}" />
+    <property key="ftpmove.message5" value="Répertoire {0} créé sur le serveur FTP" />
+    <property key="ftpmove.message6" value="Erreur de changement de répertoire sur le serveur FTP : {0}@{1}" />
+    <property key="ftpmove.message7" value="Erreur pour télécharger le fichier du serveur FTP : {0}@{1}" />
+    <property key="ftpmove.message8" value="{0} transfert annulé sur le serveur {1}@{2}" />
+
+ <!-- purge -->
+    <property key="purge.day" value="jours" />
+    <property key="purge.hour" value="hr" />
+    <property key="purge.min" value="min" />
+    <property key="purge.sec" value="sec" />
+    <property key="purge.modified" value="Modifié depuis (+/-)" />
+    <property key="purge.size" value="Taille (+/-)" />
+
+ <!-- mail -->
+    <property key="mail.server" value="Serveur SMTP" />
+    <property key="mail.user" value="Utilisateur" />
+    <property key="mail.passwd" value="Mot de passe" />
+    <property key="mail.touser" value="Destinataires" />
+    <property key="mail.fromuser" value="De" />
+    <property key="mail.subject" value="Sujet" />
+    <property key="mail.message" value="Message" />
+    <property key="mail.sending" value="Mail de {0} sur le serveur {1}" />
+
+ <!-- script -->
+    <property key="scriptExec.javascript" value="Script" />
+    <property key="scriptExec.parameters" value="&lt;html&gt;Paramètres&lt;br&gt;(clé=valeur)&lt;/html&gt;" />
+
+ <!-- pdfdecrypt -->
+    <property key="pdfdecrypt.trgdir" value="Répertoire cible" />
+    <property key="pdfdecrypt.errordir" value="Répertoire erreur" />
+    <property key="pdfdecrypt.passwords" value="Mots de passe" />
+
+ <!-- pdfdecrypt -->
+    <property key="pdfrecrypt.trgdir" value="Répertoire cible" />
+    <property key="pdfrecrypt.errordir" value="Répertoire erreur" />
+ 
+ <!-- pdftransform -->
+    <property key="pdftransform.configdir" value="Répertoire config" />
+    <property key="pdftransform.errordir" value="Répertoire erreur" />
+
+ <!-- pdfbuild -->
+    <property key="pdfbuild.configdir" value="Répertoire config" />
+    <property key="pdfbuild.errordir" value="Répertoire erreur" />
+
+ <!-- pdfaddinfo -->
+    <property key="pdfaddinfo.trgdir" value="Répertoire cible" />
+    <property key="pdfaddinfo.errordir" value="Répertoire erreur" />
+
+</xproperties>

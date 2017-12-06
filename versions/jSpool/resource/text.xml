@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<xproperties>
+
+    <property key="utils.message" value="Message" />
+    <property key="utils.error" value="Error" />
+    <property key="LookAndFeel.NotSupported" value="This look and feel is not supported on this plateform" />
+
+ <!-- FILES MENU LABELS -->
+    <property key="Files.txt" value="$Files" />
+    <property key="StartAllChannels.txt" value="Start all Channels" />
+    <property key="StopAllChannels.txt" value="Stop all Channels" />
+    <property key="ResetLogArea.txt" value="Clear Log Window" />
+    <property key="Preferences.txt" value="Preferences" />
+    <property key="Quit.txt" value="Quit" />
+
+ <!-- CHANNEL MENU LABELS -->
+    <property key="Channel.txt" value="$Channel" />
+    <property key="NewChannel.txt" value="New..." />
+    <property key="CopyChannel.txt" value="Copy..." />
+    <property key="ModifyChannel.txt" value="Modify..." />
+    <property key="StartChannel.txt" value="Start" />
+    <property key="StopChannel.txt" value="Stop" />
+    <property key="DisableChannel.txt" value="Disable" />
+    <property key="EnableChannel.txt" value="Enable" />
+    <property key="DestroyChannel.txt" value="Delete" />
+ 
+ <!-- MENU LABELS -->
+    <property key="Licence.txt" value="Register..." />
+    <property key="Help.txt" value="$Help" />
+    <property key="About.txt" value="About..." />
+    <property key="AboutPlugins.txt" value="About Plugins..." />
+ 
+ <!-- Plugins -->
+    <property key="about.plugins.title" value="About Plugins" />
+    <property key="about.plugins.name" value="Name" />
+    <property key="about.plugins.version" value="Release" />
+    <property key="about.plugins.author" value="Author" />
+ 
+ <!-- Misc -->
+    <property key="about.jspool.title" value="About jSpool" />
+
+    <property key="general.ok.button" value="OK" />
+    <property key="general.cancel.button" value="Cancel" />
+    <property key="general.select.button" value="Select" />
+
+ <!-- LICENCES MESSAGES -->
+    <property key="RegisterLicense" value="Register License" />
+    <property key="LicenseKey" value="Registration Key" />
+    <property key="QuitApp" value="Exit Application" />
+    <property key="BadLicense" value="This registration key is not valid." />
+		
+ <!-- PREFS MESSAGES -->
+    <property key="preferences.locale" value="Language" />
+    <property key="preferences.lf" value="Look &amp; Feel" />
+
+ <!-- MAINFRAME MESSAGES -->
+    <property key="mainframe.loadConfig" value="Loading configuration" />
+    <property key="mainframe.datamodel.id" value="Channel Name" />
+    <property key="mainframe.datamodel.source" value="Source" />
+    <property key="mainframe.datamodel.mode" value="Target" />
+    <property key="mainframe.datamodel.status" value="Status" />
+ 
+ <!-- CHANNEL MESSAGES -->
+    <property key="channel.stop" value="Stopped" />
+    <property key="channel.start" value="Starting" />
+    <property key="channel.active" value="Active" />
+    <property key="channel.failed" value="FAILED" />
+    <property key="channel.run" value="Running" />
+    <property key="channel.down" value="Receiving" />
+    <property key="channel.up" value="Sending" />
+    <property key="channel.disable" value="Disabled" />
+
+    <property key="channel.run.message1" value="Directory {0} does not exist" />
+    <property key="channel.run.message2" value="{0} is not a Directory" />
+
+    <property key="channel.process1" value="{0} is zero Length" />
+    <property key="channel.process3" value="{0} detected" />
+    <property key="channel.process4" value="{0} is not a directory" />
+    <property key="channel.process5" value="Process Error: {0}" />
+    <property key="channel.process6" value="{0} still growing" />
+    <property key="channel.process7" value="Deleting sub-directory: {0}" />
+
+    <property key="channel.accept.message1" value="{0} excluded by filter" />
+    <property key="channel.doexec.message1" value="Launching : {0}" />
+    <property key="channel.purge.message1" value="{0} deleted" />
+ 
+ <!-- CHANNEL PROPERTIES MESSAGES -->
+    <property key="chprefs.title" value="Preferences" />
+
+ <!-- CHANNEL PROPERTIES MESSAGES -->
+    <property key="channel.title" value="Channel Properties" />
+    <property key="channel.message1" value="Include Sub-Directories" />
+    <property key="channel.message2" value="Accept Zero Length Files" />
+    <property key="channel.message3" value="Autostart" />
+
+    <property key="channel.name" value="Name" />
+    <property key="channel.filter" value="Filter" />
+    <property key="channel.tempo" value="Tempo" />
+    <property key="channel.stability" value="Stability" />
+    <property key="channel.maxfiles" value="Max Files" /> 
+    <property key="channel.delsubdirdelay" value="Delete Subdir" />
+ 
+    <property key="channel.regexp" value="(Regexp PERL)" />
+    <property key="channel.secondes" value="(Secondes)" />
+    <property key="channel.periods" value="(Periodes)" />
+    <property key="channel.zerofiles" value="(0 = All files)" />
+
+    <property key="channel.warning1" value="Channel Name is too short (nead at least 2 Characters)" />
+    <property key="channel.warning2" value="Filter: Bad Syntax" />
+    <property key="channel.warning3" value="Temporisation must be higher than 1 milli-seconde" />
+    <property key="channel.warning4" value="Tempo: Bad value" />
+    <property key="channel.warning5" value="Stability must be equal or higher than 0 Periode" />
+    <property key="channel.warning6" value="Stability: Bad value" />
+    <property key="channel.warning7" value="Max Files must be equal or higher than 0" />
+    <property key="channel.warning8" value="Max Files: Bad value" />
+    <property key="channel.warning9" value="Delete Empty Subdir must be equal or higher than 0 Seconde" />
+    <property key="channel.warning10" value="Delete Empty Subdir: Bad value" />
+
+    <property key="source.input" value="Input" />
+    <property key="source.type" value="Mode" />
+    <property key="source.srcdir" value="Directory" />
+    <property key="source.checksum" value="Compute checksum to check file stability" />
+    <property key="source.sortorder" value="Files ordering" />
+
+    <property key="source.sort.None" value="Undefined" />
+    <property key="source.sort.Alpha" value="Process by Alphabetical Sort" />
+    <property key="source.sort.AlphaInv" value="Process by Reverse Alphabetical Sort" />
+    <property key="source.sort.Date" value="Process the most recent file first (LIFO)" />
+    <property key="source.sort.DateInv" value="Process the oldest file first (FIFO)" />
+
+    <property key="target.output" value="Output" />
+    <property key="target.type" value="Mode" />
+ 
+ <!-- localmove -->
+    <property key="localmove.trgdir" value="Target Directory" />
+    <property key="localmove.subdir" value="Create Sub-Directories" />
+    <property key="localmove.cleanchar" value="Clean Filename" />
+    <property key="localmove.cleanspace" value="Replace space by '_' in Filename" />
+    <property key="localmove.rename" value="Rename file" />
+    <property key="localmove.srcrename" value="Source regexp" />
+    <property key="localmove.trgrename" value="Target name" />
+    <property key="localmove.replace" value="Replace" />
+    <property key="localmove.by" value="by" />
+
+    <property key="localmove.message1" value="Bad Directory Name" />
+    <property key="localmove.message2" value="Creating {0} Directory" />
+    <property key="localmove.message3" value="Moving {0} to {1}" />
+    <property key="localmove.message4" value="Error when moving {0} to {1}" />
+    <property key="localmove.message5" value="The source regexp of the rename filter does not match the filename" />
+    <property key="localmove.message6" value="Error when trying to rename the file {0}" />
+    <property key="localmove.message7" value="The source regexp of the rename filter is not valid." />
+
+ <!-- localexec -->
+    <property key="localexec.exec" value="Exec" />
+    <property key="localexec.beforeparams" value="First Parameters" />
+    <property key="localexec.afterparams" value="Last Parameters" />
+    <property key="localexec.message4" value="Wait for the End of the Sub-Process" />
+    <property key="localexec.message5" value="Delete source file" />
+
+ <!-- ftpmove -->
+    <property key="ftpmove.server" value="Server" />
+    <property key="ftpmove.user" value="User" />
+    <property key="ftpmove.passwd" value="Password" />
+    <property key="ftpmove.srcdir" value="Source Directory" />
+    <property key="ftpmove.trgdir" value="Target Directory" />
+    <property key="ftpmove.trgext" value="Tmp Suffix" />
+    <property key="ftpmove.transfer" value="Transfer Mode" />
+    <property key="ftpmove.cleanchar" value="Clean Filename" />
+    <property key="ftpmove.cleanspace" value="Replace space by '_' in Filename" />
+    <property key="ftpmove.subdir" value="Create Sub-Directories" />
+
+    <property key="ftpmove.message1" value="Connecting to FTP Server : {0}@{1}" />
+    <property key="ftpmove.message2" value="Sending {0} to FTP Server {1}@{2}:{3}" />
+    <property key="ftpmove.message3" value="Failed to connect to FTP server : {1}@{0}" />
+    <property key="ftpmove.message4" value="Creating {2} on FTP server : {0}@{1}" />
+    <property key="ftpmove.message5" value="Creating directory : {0}" />
+    <property key="ftpmove.message6" value="Failed to change directory on FTP server : {0}@{1}" />
+    <property key="ftpmove.message7" value="Failed to downlaod file from FTP server : {0}@{1}" />
+    <property key="ftpmove.message8" value="{0} transfer is canceled on server {1}@{2}" />
+
+ <!-- purge -->
+    <property key="purge.day" value="Days" />
+    <property key="purge.hour" value="hr" />
+    <property key="purge.min" value="min" />
+    <property key="purge.sec" value="sec" />
+    <property key="purge.modified" value="Modified Time (+/-)" />
+    <property key="purge.size" value="Size (+/-)" />
+
+ <!-- mail -->
+    <property key="mail.server" value="SMTP Server" />
+    <property key="mail.user" value="User" />
+    <property key="mail.passwd" value="Password" />
+    <property key="mail.touser" value="To" />
+    <property key="mail.fromuser" value="From" />
+    <property key="mail.subject" value="Subject" />
+    <property key="mail.message" value="Message" />
+    <property key="mail.sending" value="Sending mail from {0} to server {1}" />
+ 
+ <!-- script -->
+    <property key="scriptExec.javascript" value="Javascript" />
+ 
+ <!-- pdfdecrypt -->
+    <property key="pdfdecrypt.trgdir" value="Target Directory" />
+    <property key="pdfdecrypt.errordir" value="Error Directory" />
+    <property key="pdfdecrypt.passwords" value="Passwords" />
+
+ <!-- pdfdecrypt -->
+    <property key="pdfrecrypt.trgdir" value="Target Directory" />
+    <property key="pdfrecrypt.errordir" value="Error Directory" />
+ 
+ <!-- pdftransform -->
+    <property key="pdftransform.configdir" value="Config Directory" />
+    <property key="pdftransform.errordir" value="Error Directory" />
+ 
+ <!-- pdfbuild -->
+    <property key="pdfbuild.configdir" value="Config Directory" />
+    <property key="pdfbuild.errordir" value="Error Directory" />
+
+ <!-- pdfaddinfo -->
+    <property key="pdfaddinfo.trgdir" value="Target Directory" />
+    <property key="pdfaddinfo.errordir" value="Error Directory" />
+
+</xproperties>

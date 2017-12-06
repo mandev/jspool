@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<PdfTool>
+  
+   <Transform deleteSource="false" scaleX="1.0" scaleY="1.0" rotation="1.5707963267948966" destination="C:/spool/plaques/AGEN-A4HR-A4HR_{TEMP}.tmp" />
+  
+   <Impose deleteSource="true" width="450.0 mm" height="320.0 mm" type="2" destination="C:/spool/plaques/AGEN-A4HR-A4HR_{TEMP}.pdf">
+      <PageSlot x="5 mm" y="12.5 mm" folio="true" folioX="112.0 mm" folioY="312.0 mm" folioText="{FILENAME} - Page {FOLIO}" folioSize="10"/>
+      <PageSlot x="229.0 mm" y="12.5 mm" folio="true" folioX="337.0 mm" folioY="312.0 mm" folioText="{FILENAME} - Page {FOLIO}" folioSize="10"/>
+      <PageMark x="0.0 mm" y="0.0 mm" size="5.0 mm" offset="0.0 mm" position="++++" thickness="0.35 mm" color="0,0,0" />
+      <PageMark x="0.0 mm" y="0.0 mm" size="5.0 mm" offset="0.0 mm" position="++++" thickness="0.35 mm" color="0,0,0" />
+   </Impose>
+
+</PdfTool>

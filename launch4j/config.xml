@@ -1,0 +1,53 @@
+
+<launch4jConfig>
+   <headerType>gui</headerType>
+   <outfile>C:\dev\netbeans\jSpool\dist\jSpool.exe</outfile>
+   <jar>C:\dev\netbeans\jSpool\dist\jSpool_out.jar</jar>
+   <dontWrapJar>false</dontWrapJar>
+   <errTitle></errTitle>
+   <downloadUrl>http://java.com/download</downloadUrl>
+   <supportUrl></supportUrl>
+   <cmdLine></cmdLine>
+   <chdir>.</chdir>
+   <priority>normal</priority>
+   <customProcName>true</customProcName>
+   <manifest>C:\dev\netbeans\jSpool\launch4j\uac.exe.manifest</manifest>
+   <stayAlive>false</stayAlive>
+   <icon>C:\dev\netbeans\jSpool\launch4j\launch4j.ico</icon>
+   <jre>
+      <!-- Specify one of the following or both -->
+      <path>jre</path>
+      <minVersion>1.6.0</minVersion>
+      <maxVersion></maxVersion>
+      <jdkPreference>preferJre</jdkPreference>
+      <!-- Heap sizes in MB and % of free memory -->
+      <initialHeapSize>64</initialHeapSize>
+      <maxHeapSize>1024</maxHeapSize>
+      <!--maxHeapPercent>10</maxHeapPercent -->
+      <opt>-Dsun.java2d.noddraw=true</opt>
+   </jre>
+   <splash>
+      <file>C:\dev\netbeans\jSpool\launch4j\splash.bmp</file>
+      <waitForWindow>true</waitForWindow>
+      <timeout>20</timeout>
+      <timeoutErr>false</timeoutErr>
+   </splash>
+   <versionInfo>
+      <fileVersion>7.0.0.0</fileVersion>
+      <txtFileVersion>7</txtFileVersion>
+      <fileDescription>jSpool</fileDescription>
+      <copyright>Emmanuel Deviller</copyright>
+      <productVersion>7.0.0.0</productVersion>
+      <txtProductVersion>7</txtProductVersion>
+      <productName>Emmanuel Deviller</productName>
+      <companyName>Emmanuel Deviller</companyName>
+      <internalName>Emmanuel Deviller</internalName>
+      <originalFilename>application.exe</originalFilename>
+   </versionInfo>
+   <messages>
+      <startupErr></startupErr>
+      <bundledJreErr></bundledJreErr>
+      <jreVersionErr></jreVersionErr>
+      <launcherErr></launcherErr>
+   </messages>
+</launch4jConfig>
