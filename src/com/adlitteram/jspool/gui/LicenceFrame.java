@@ -98,10 +98,7 @@ public class LicenceFrame extends JDialog implements ActionListener {
             }
 
             if (licence.equals(Update.getCNAME() + "-DEMO-30DAYS")) {
-                if (demoLicence()) {
-                    return true;
-                }
-                return false;
+                return demoLicence();
             }
             if (licence.length() != 23) {
                 return false;

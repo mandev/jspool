@@ -1,15 +1,15 @@
 /*
  * Version.java
  *
- * Created on 18 décembre 2004, 21:14
+ * Created on 18 decembre 2004, 21:14
  */
 
 package com.adlitteram.jspool;
 
 public class Update {
    
-   private static final String CNAME = "pSpool";
-   private static final String NAME = "pSpool";
+   private static final String CNAME	= "jSpool";
+   private static final String NAME = "jSpool";
    private static final String WEB = "";
    private static final String EMAIL = "";
 

@@ -1,7 +1,7 @@
 /*
  * Version.java
  *
- * Created on 18 décembre 2004, 21:14
+ * Created on 18 decembre 2004, 21:14
  */
 package com.adlitteram.jspool;
 
@@ -10,7 +10,7 @@ public class Version {
     private static final String COPYRIGHT = "Tessier & Ashpool";
     private static final String DATE = "2016";
     private static final String AUTHOR = "Emmanuel Deviller";
-    private static final String BUILD_NUM = "293";
+    private static final String BUILD_NUM = "297";
     private static final String LICENCE = "Commercial";
     private static final String VERSION_NUM = "7.98";
     private static final String CNAME = "jSpool";

@@ -193,41 +193,31 @@ public class LocalFile extends SourceFile implements FilenameFilter {
         return lf;
     }
     // Alphabetical Comparator
-    public final static Comparator alphaSort = new Comparator() {
-        @Override
-        public int compare(Object a, Object b) {
-            String sa = ((LocalFile) a).getName();
-            String sb = ((LocalFile) b).getName();
-            return sa.compareToIgnoreCase(sb);
-        }
+    public final static Comparator alphaSort = (Comparator) (Object a, Object b) -> {
+        String sa = ((LocalFile) a).getName();
+        String sb = ((LocalFile) b).getName();
+        return sa.compareToIgnoreCase(sb);
     };
+    
     // Reverse Alphabetical Comparator
-    public final static Comparator alphaInvSort = new Comparator() {
-        @Override
-        public int compare(Object a, Object b) {
-            String sa = ((LocalFile) a).getName();
-            String sb = ((LocalFile) b).getName();
-
-            return -sa.compareToIgnoreCase(sb);
-        }
+    public final static Comparator alphaInvSort = (Comparator) (Object a, Object b) -> {
+        String sa = ((LocalFile) a).getName();
+        String sb = ((LocalFile) b).getName();
+        return -sa.compareToIgnoreCase(sb);
     };
+    
     // Date Comparator
-    public final static Comparator dateSort = new Comparator() {
-        @Override
-        public int compare(Object a, Object b) {
-            long sa = ((LocalFile) a).lastModified();
-            long sb = ((LocalFile) b).lastModified();
-            return (int) (sa - sb);
-        }
+    public final static Comparator dateSort = (Comparator) (Object a, Object b) -> {
+        long sa = ((LocalFile) a).lastModified();
+        long sb = ((LocalFile) b).lastModified();
+        return (int) (sa - sb);
     };
+    
     // Reverse Date Comparator
-    public final static Comparator dateInvSort = new Comparator() {
-        @Override
-        public int compare(Object a, Object b) {
-            long sa = ((LocalFile) a).lastModified();
-            long sb = ((LocalFile) b).lastModified();
-            return (int) (sb - sa);
-        }
+    public final static Comparator dateInvSort = (Comparator) (Object a, Object b) -> {
+        long sa = ((LocalFile) a).lastModified();
+        long sb = ((LocalFile) b).lastModified();
+        return (int) (sb - sa);
     };
 
     // Tests if a specified file should be included in a file list. (filenameFilter)
@@ -240,14 +230,6 @@ public class LocalFile extends SourceFile implements FilenameFilter {
         if (nfile.isDirectory()) {
             return true;
         }
-
-        //if ( regexp.isMatch(name) ) return true ;
-        if (regexp.matcher(name).matches()) {
-            return true;
-        }
-
-//      String[] args1 = { name } ;
-//      channel.logInfo( Message.get("channel.accept.1", args1)) ;
-        return false;
+        return regexp.matcher(name).matches();
     }
 }

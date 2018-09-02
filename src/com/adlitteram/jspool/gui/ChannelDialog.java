@@ -69,12 +69,8 @@ public class ChannelDialog extends JDialog {
         autostartCheck = new JCheckBox(Message.get("channel.message3"), channel.autoStart());
 
         recCheck = new JCheckBox(Message.get("channel.message1"), channel.listSubDir());
-        recCheck.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                delSubdirField.setEnabled(recCheck.isSelected());
-            }
+        recCheck.addActionListener((ActionEvent e) -> {
+            delSubdirField.setEnabled(recCheck.isSelected());
         });
 
         delSubdirField.setEnabled(recCheck.isSelected());
@@ -93,23 +89,15 @@ public class ChannelDialog extends JDialog {
 
     final JPanel buildButtonPanel() {
         JButton cancel = new JButton(Message.get("general.cancel.button"));
-        cancel.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cancelPressed();
-            }
+        cancel.addActionListener((ActionEvent e) -> {
+            cancelPressed();
         });
 
         JButton ok = new JButton(Message.get("general.ok.button"));
         getRootPane().setDefaultButton(ok);
 
-        ok.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                OKPressed();
-            }
+        ok.addActionListener((ActionEvent e) -> {
+            OKPressed();
         });
 
         int w[] = {5, 0, -5, 5, -3, 6};
@@ -196,19 +184,14 @@ public class ChannelDialog extends JDialog {
         srcCombo = new JComboBox();
         srcPanel = new JPanel(new CardLayout());
 
-        for (int i = 0; i < channel.srcHandlers.length; i++) {
-            AbstractSource sh = channel.srcHandlers[i];
+        for (AbstractSource sh : channel.srcHandlers) {
             srcPanel.add(sh.buildPanel(), sh.getName());
             srcCombo.addItem(sh.getName());
         }
 
-        srcCombo.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout) srcPanel.getLayout();
-                cl.show(srcPanel, (String) srcCombo.getSelectedItem());
-            }
+        srcCombo.addActionListener((ActionEvent e) -> {
+            CardLayout cl = (CardLayout) srcPanel.getLayout();
+            cl.show(srcPanel, (String) srcCombo.getSelectedItem());
         });
 
         srcCombo.setSelectedItem(channel.getSourceName());
@@ -230,19 +213,14 @@ public class ChannelDialog extends JDialog {
         modeCombo = new JComboBox();
         modePanel = new JPanel(new CardLayout());
 
-        for (int i = 0; i < channel.trgHandlers.length; i++) {
-            AbstractTarget sh = channel.trgHandlers[i];
+        for (AbstractTarget sh : channel.trgHandlers) {
             modePanel.add(sh.buildPanel(this), sh.getName());
             modeCombo.addItem(sh.getName());
         }
 
-        modeCombo.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout) modePanel.getLayout();
-                cl.show(modePanel, (String) modeCombo.getSelectedItem());
-            }
+        modeCombo.addActionListener((ActionEvent e) -> {
+            CardLayout cl = (CardLayout) modePanel.getLayout();
+            cl.show(modePanel, (String) modeCombo.getSelectedItem());
         });
 
         modeCombo.setSelectedItem(channel.getTargetName());
@@ -342,18 +320,14 @@ public class ChannelDialog extends JDialog {
         channel.setProperty(Channel.SRCCLASS, channel.getSrcHandlerName(sourceIndex));
         channel.setProperty(Channel.TRGCLASS, channel.getTrgHandlerName(targetIndex));
 
-        for (int i = 0; i < channel.srcHandlers.length; i++) {
-            AbstractSource sh = channel.srcHandlers[i];
-            boolean status = sh.setParameters();
-            if (status == false) {
+        for (AbstractSource sh : channel.srcHandlers) {
+            if (sh.setParameters() == false) {
                 return;
             }
         }
 
-        for (int i = 0; i < channel.trgHandlers.length; i++) {
-            AbstractTarget th = channel.trgHandlers[i];
-            boolean status = th.setParameters();
-            if (status == false) {
+        for (AbstractTarget th : channel.trgHandlers) {
+            if (th.setParameters() == false) {
                 return;
             }
         }

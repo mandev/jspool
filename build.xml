@@ -2,8 +2,8 @@
 <!-- You may freely edit this file. See commented blocks below for -->
 <!-- some examples of how to customize the build. -->
 <!-- (If you delete it and reopen the project it will be recreated.) -->
-<project name="jSpool" default="default" basedir=".">
-    <description>Builds, tests, and runs the project jSpool.</description>
+<project name="jspool" default="default" basedir=".">
+    <description>Builds, tests, and runs the project jspool.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
@@ -54,7 +54,7 @@
 
     An example of overriding the target for project execution could look like this:
 
-        <target name="run" depends="jSpool-impl.jar">
+        <target name="run" depends="jspool-impl.jar">
             <exec dir="bin" executable="launcher.exe">
                 <arg file="${dist.jar}"/>
             </exec>
@@ -85,7 +85,7 @@
     <property name="javahelp.dir" location="C:/Program Files/Java/jh2.0/javahelp"/>
     <property name="innoconf.dir" location="C:/dev/installer/"/>
 
-    <property name="launch4j.config" location="C:/dev/netbeans/jSpool/launch4j/config.xml"/>
+    <property name="launch4j.config" location="C:/dev/netbeans/jspool/launch4j/config.xml"/>
 
     <!-- don't create the jar file, just compile -->
     <target name="jar"  depends="init,compile" />
@@ -137,7 +137,7 @@
     </target>
 
     <target name="proguard.new" >
-        <copy tofile="${dist.dir}/jSpool_out.jar" file="${dist.dir}/jSpool.jar" />
+        <copy tofile="${dist.dir}/jspool_out.jar" file="${dist.dir}/jspool.jar" />
     </target>
 
    <!-- launch4j exe maker description="Build exe with Launch4j" -->
@@ -181,7 +181,7 @@
     <target name="prog_init" >
 
       <!-- set the version  -->
-        <loadfile property="prog.version" srcFile="src/com/adlitteram/jSpool/Version.java">
+        <loadfile property="prog.version" srcFile="src/com/adlitteram/jspool/Version.java">
             <filterchain>
                 <tokenfilter>
                     <containsregex pattern='^.*VERSION_NUM\s*=\s*"(.*)".*$' replace="\1" />
@@ -197,29 +197,29 @@
         <property name="build.number.str" value='"${build.number}"' />
         <echo>build.number ${build.number} - ${build.number.str}</echo>
 
-        <replaceregexp file="src/com/adlitteram/jSpool/Version.java"
+        <replaceregexp file="src/com/adlitteram/jspool/Version.java"
                      match='BUILD_NUM\s*=\s*".*"'
                      replace="BUILD_NUM = ${build.number.str}" />
 
       <!-- purge  -->
         <delete  quiet="true" includeemptydirs="true">
-            <fileset dir="src/com/adlitteram/jSpool/resource/" />
-            <fileset dir="src/com/adlitteram/jSpool/resource/icon/" includes="*.png,*.gif,*.jpg" />
-            <fileset file="src/com/adlitteram/jSpool/Update.java" />
+            <fileset dir="src/com/adlitteram/jspool/resource/" />
+            <fileset dir="src/com/adlitteram/jspool/resource/icon/" includes="*.png,*.gif,*.jpg" />
+            <fileset file="src/com/adlitteram/jspool/Update.java" />
         </delete>
 
       <!-- copy  -->
         <copy tofile="launch4j/launch4j.ico" file="versions/${prog.name}/${prog.name}.ico" overwrite="true" />
 
-        <copy todir="src/com/adlitteram/jSpool/resource/icon/" overwrite="true" >
+        <copy todir="src/com/adlitteram/jspool/resource/icon/" overwrite="true" >
             <fileset dir="versions/${prog.name}/icon" />
         </copy>
 
-        <copy todir="src/com/adlitteram/jSpool/resource/" overwrite="true" >
+        <copy todir="src/com/adlitteram/jspool/resource/" overwrite="true" >
             <fileset dir="versions/${prog.name}/resource" />
         </copy>
 
-        <copy tofile="src/com/adlitteram/jSpool/Update.java" overwrite="true" >
+        <copy tofile="src/com/adlitteram/jspool/Update.java" overwrite="true" >
             <fileset file="versions/${prog.name}/Java/Update.txt" />
         </copy>
 
@@ -236,14 +236,14 @@
         <delete dir="${win_dist.dir}"/>
         <mkdir dir="${win_dist.dir}"/>
 
-        <copy tofile="${win_dist.dir}/${prog.name}.exe" file="${dist.dir}/jSpool.exe" />
+        <copy tofile="${win_dist.dir}/${prog.name}.exe" file="${dist.dir}/jspool.exe" />
 
         <copy todir="${win_dist.dir}" >
             <fileset file="versions/${prog.name}/*.txt" />
             <fileset file="versions/${prog.name}/*.pdf" />
         </copy>
 
-        <copy tofile="${win_dist.dir}/jSpool.jar" file="dist/jSpool_out.jar" overwrite="true" />
+        <copy tofile="${win_dist.dir}/jspool.jar" file="dist/jspool_out.jar" overwrite="true" />
 
         <copy todir="${win_dist.dir}/lib" >
             <fileset dir="lib" >
@@ -294,7 +294,7 @@
         </copy>
 
         <copy verbose="true" todir="${lin_dist.dir}" includeEmptyDirs="true" >
-            <fileset file="${win_dist.dir}/lib/jSpool-boot.jar" />
+            <fileset file="${win_dist.dir}/lib/jspool-boot.jar" />
         </copy>
 
         <copy todir="${lin_dist.dir}/jre" includeEmptyDirs="true" failonerror="false" >
@@ -302,10 +302,10 @@
         </copy>
         <chmod file="${lin_dist.dir}/jre/bin/java" perm="ugo+rx" failonerror="false" />
 
-        <copy tofile="${lin_dist.dir}/${prog.name}" file="plateform/linux/jSpool.bin" />
+        <copy tofile="${lin_dist.dir}/${prog.name}" file="plateform/linux/jspool.bin" />
         <chmod file="${lin_dist.dir}/${prog.name}" perm="ugo+rx"/>
 
-        <copy tofile="${lin_dist.dir}/${prog.name}.sh" file="plateform/linux/jSpool.sh" />
+        <copy tofile="${lin_dist.dir}/${prog.name}.sh" file="plateform/linux/jspool.sh" />
         <chmod file="${lin_dist.dir}/${prog.name}.sh" perm="ugo+rx"/>
 
         <property name="lin_setup.dir" location="${lin_base.dir}/setup/"/>
@@ -325,16 +325,16 @@
             <fileset dir="${win_jre.dir}"/>
         </copy>
 
-        <delete file="${win_dist.dir}/jSpool.jar" quiet="true" />
+        <delete file="${win_dist.dir}/jspool.jar" quiet="true" />
 
         <antcall target="innosetup" />
     </target>
 
    <!-- =================================================================================================== -->
-   <!-- jSpool -->
+   <!-- jspool -->
    <!-- =================================================================================================== -->
     <target name="jspool_init" depends="clean" >
-        <property name="prog.name" value="jSpool"/>
+        <property name="prog.name" value="jspool"/>
         <property name="prog.locale" value="fr"/>
         <property name="prog.help" value="true"/>
         <property name="prog.locale.list" value="**/fr/*,**/en/*"/>
@@ -342,10 +342,10 @@
         <echo>prog.name: ${prog.name} - prog.locale: ${prog.locale}</echo>
     </target>
 
-    <!--target name="jspool" depends="jspool_init,prog_init,help_prog" description="jSpool Init" /-->
-    <target name="jspool" depends="jspool_init,prog_init" description="jSpool Init" />
-    <target name="jspool_distrib" depends="jspool,prog_distrib" description="jSpool Distrib" />
-    <target name="jspool_setup" depends="jspool_distrib,prog_setup" description="jSpool Setup" />
+    <!--target name="jspool" depends="jspool_init,prog_init,help_prog" description="jspool Init" /-->
+    <target name="jspool" depends="jspool_init,prog_init" description="jspool Init" />
+    <target name="jspool_distrib" depends="jspool,prog_distrib" description="jspool Distrib" />
+    <target name="jspool_setup" depends="jspool_distrib,prog_setup" description="jspool Setup" />
 
    <!-- =================================================================================================== -->
    <!-- pSpool -->

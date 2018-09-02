@@ -1,7 +1,7 @@
 /*
  * PdfDecryptor.java
  *
- * Created on 22 décembre 2005, 15:47
+ * Created on 22 decembre 2005, 15:47
  *
  * To change this template, choose Tools | Options and locate the template under
  * the Source Creation and Management node. Right-click the template and choose

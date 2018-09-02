@@ -82,7 +82,7 @@ public class XPropertiesHandler extends DefaultHandler {
 
     // Returns a string of the location.
     private String getLocationString(SAXParseException ex) {
-        StringBuffer str = new StringBuffer();
+        StringBuilder str = new StringBuilder();
 
         String systemId = ex.getSystemId();
         if (systemId != null) {

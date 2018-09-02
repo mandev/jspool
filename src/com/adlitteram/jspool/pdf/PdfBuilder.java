@@ -128,7 +128,7 @@ public class PdfBuilder {
             createCoverPage(file.getPath());
             file.delete();
 
-            // 29 = Janvier 2007 - 1ère page
+            // 29 = Janvier 2007 - 1ere page
             for (int i = 3; i <= bgReader.getNumberOfPages(); i++) {
                 String name = (String) imageList.get(i - 2);
                 createPage(i, getOffset(name) - OFFSET);

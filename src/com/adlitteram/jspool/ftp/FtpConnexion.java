@@ -175,14 +175,10 @@ public class FtpConnexion implements FTPProgressMonitor {
     @Override
     public void bytesTransferred(long count) {
         final int progress = (fileSize > 0) ? (int) (100 * count / fileSize) : 0;
-        Runnable runnable = new Runnable() {
-
-            @Override
-            public void run() {
-                channel.update(progress);
-                if (channel.isStopped()) {
-                    client.cancelTransfer();
-                }
+        Runnable runnable = () -> {
+            channel.update(progress);
+            if (channel.isStopped()) {
+                client.cancelTransfer();
             }
         };
         SwingUtilities.invokeLater(runnable);

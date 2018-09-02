@@ -3,7 +3,8 @@
  * Copyright (C) 2001 Emmanuel Deviller
  *
  * @version 2.1
- * @author Emmanuel Deviller  */
+ * @author Emmanuel Deviller
+ */
 package com.adlitteram.jspool.gui;
 
 import com.adlitteram.jasmin.LocaleManager;
@@ -16,7 +17,6 @@ import cz.autel.dmi.HIGLayout;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Locale;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -78,33 +78,23 @@ public class PrefDialog extends JDialog {
 
     private JPanel buildButtonPanel() {
         JButton okButton = new JButton(Message.get("general.ok.button"));
-        okButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String locale = "en";
-                if (frButton.isSelected()) {
-                    locale = "fr";
-                }
-                LocaleManager.setUILocale(new Locale(locale));
-
-                XProp.put("Log.useJDBC", String.valueOf(useJDBCLogCheck.isSelected()));
-                XProp.put("Log.JDBCDriver", driverField.getText());
-                XProp.put("Log.JDBCUrl", urlField.getText());
-                XProp.put("Log.JDBCUser", userField.getText());
-                XProp.put("Log.JDBCPasswd", passwordField.getText());
-
-                PrefDialog.this.dispose();
+        okButton.addActionListener((ActionEvent e) -> {
+            String locale1 = "en";
+            if (frButton.isSelected()) {
+                locale1 = "fr";
             }
+            LocaleManager.setUILocale(new Locale(locale1));
+            XProp.put("Log.useJDBC", String.valueOf(useJDBCLogCheck.isSelected()));
+            XProp.put("Log.JDBCDriver", driverField.getText());
+            XProp.put("Log.JDBCUrl", urlField.getText());
+            XProp.put("Log.JDBCUser", userField.getText());
+            XProp.put("Log.JDBCPasswd", passwordField.getText());
+            PrefDialog.this.dispose();
         });
 
         JButton cancelButton = new JButton(Message.get("general.cancel.button"));
-        cancelButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PrefDialog.this.dispose();
-            }
+        cancelButton.addActionListener((ActionEvent e) -> {
+            PrefDialog.this.dispose();
         });
 
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -115,17 +105,13 @@ public class PrefDialog extends JDialog {
 
     private JPanel buildLookPanel() {
 
-        lookCombo = new JComboBox(LookManager.looks);
+        lookCombo = new JComboBox(LookManager.LOOKS);
         lookCombo.setEditable(false);
         lookCombo.setSelectedItem(XProp.get("LookAndFeel"));
-        lookCombo.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LookManager.setLookAndFeel((String) lookCombo.getSelectedItem());
-                LookAndFeelFactory.installJideExtension(LookAndFeelFactory.VSNET_STYLE_WITHOUT_MENU);
-                SwingUtilities.updateComponentTreeUI(PrefDialog.this);
-            }
+        lookCombo.addActionListener((ActionEvent e) -> {
+            LookManager.setLookAndFeel((String) lookCombo.getSelectedItem());
+            LookAndFeelFactory.installJideExtension(LookAndFeelFactory.VSNET_STYLE_WITHOUT_MENU);
+            SwingUtilities.updateComponentTreeUI(PrefDialog.this);
         });
 
         int w[] = {10, 0, 10};
@@ -139,7 +125,7 @@ public class PrefDialog extends JDialog {
 
     private JPanel buildLocalePanel() {
         enButton = new JRadioButton("English");
-        frButton = new JRadioButton("Français");
+        frButton = new JRadioButton("FranÃ§ais");
 
         ButtonGroup group = new ButtonGroup();
         group.add(enButton);
@@ -148,8 +134,7 @@ public class PrefDialog extends JDialog {
         String locale = LocaleManager.getUILocale().toString();
         if ("fr".equals(locale)) {
             frButton.setSelected(true);
-        }
-        else {
+        } else {
             enButton.setSelected(true);
         }
 
@@ -194,7 +179,6 @@ public class PrefDialog extends JDialog {
         // url = "jdbc:mysql://localhost:3306/JSPOOL" ;
         // user = "manu" ;
         // password = "deviller" ;
-
         panel.add(new JLabel("JDBC Driver"), c.xy(2, 4, "r"));
         panel.add(driverField, c.xy(4, 4));
 

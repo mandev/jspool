@@ -4,15 +4,15 @@
  <property key="Open.ico" value="folder.png" />
  <property key="Help.ico" value="Help2.gif" />
 
- <property key="StartAllChannels.ico" value="VCRFastForward.gif" />
- <property key="StopAllChannels.ico" value="VCRStop.gif" />
- <property key="ResetLogArea.ico" value="DeleteSheet.gif" />
- <property key="NewChannel.ico" value="New.gif" />
- <property key="ModifyChannel.ico" value="Hammer.gif" />
- <property key="StartChannel.ico" value="RunComp.gif" />
- <property key="StopChannel.ico" value="StopSign.gif" />
- <property key="UpperChannel.ico" value="MoveUp.gif" />
- <property key="LowerChannel.ico" value="MoveDown.gif" />
+ <property key="StartAllChannels.ico" value="resource/icon/VCRFastForward.gif" />
+ <property key="StopAllChannels.ico" value="resource/icon/VCRStop.gif" />
+ <property key="ResetLogArea.ico" value="resource/icon/DeleteSheet.gif" />
+ <property key="NewChannel.ico" value="resource/icon/New.gif" />
+ <property key="ModifyChannel.ico" value="resource/icon/Hammer.gif" />
+ <property key="StartChannel.ico" value="resource/icon/RunComp.gif" />
+ <property key="StopChannel.ico" value="resource/icon/StopSign.gif" />
+ <property key="UpperChannel.ico" value="resource/icon/MoveUp.gif" />
+ <property key="LowerChannel.ico" value="resource/icon/MoveDown.gif" />
 
 </properties>
 

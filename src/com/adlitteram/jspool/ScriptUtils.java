@@ -33,7 +33,7 @@ public class ScriptUtils {
             p = Runtime.getRuntime().availableProcessors();
         }
         int nproc = Math.max(1, p);
-        return new ThreadPoolExecutor(nproc, nproc, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<Runnable>());
+        return new ThreadPoolExecutor(nproc, nproc, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>());
     }
 
     public static Builder createXomBuilder(final boolean processComment, final boolean processProcessingInstruction) {

@@ -59,7 +59,7 @@ public class MainFrame extends JFrame {
     private JTable channelTable;
     private JPopupMenu popupMenu;
     //
-    private ArrayList<Channel> channelList = new ArrayList<Channel>();
+    private ArrayList<Channel> channelList = new ArrayList<>();
     public ChannelModel channelModel;
     public int lastSelectedRow = 0;
 
@@ -132,22 +132,18 @@ public class MainFrame extends JFrame {
 
         ListSelectionModel rowSM = channelTable.getSelectionModel();
 
-        rowSM.addListSelectionListener(new ListSelectionListener() {
-
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                ListSelectionModel lsm = (ListSelectionModel) e.getSource();
-                if (lsm.isSelectionEmpty()) {
-                    while (lastSelectedRow >= channelList.size()) {
-                        lastSelectedRow--;
-                    }
-                    if (lastSelectedRow >= 0) {
-                        lsm.setSelectionInterval(lastSelectedRow, lastSelectedRow);
-                    }
+        rowSM.addListSelectionListener((ListSelectionEvent e) -> {
+            ListSelectionModel lsm = (ListSelectionModel) e.getSource();
+            if (lsm.isSelectionEmpty()) {
+                while (lastSelectedRow >= channelList.size()) {
+                    lastSelectedRow--;
                 }
-                else {
-                    lastSelectedRow = lsm.getMinSelectionIndex();
+                if (lastSelectedRow >= 0) {
+                    lsm.setSelectionInterval(lastSelectedRow, lastSelectedRow);
                 }
+            }
+            else {
+                lastSelectedRow = lsm.getMinSelectionIndex();
             }
         });
 

@@ -53,6 +53,7 @@ public class MainApplication extends Application {
         super.init();
 
         System.setProperty("swing.aatext", "true");
+        System.setProperty("awt.useSystemAAFontSettings", "on");
         System.setProperty("swing.boldMetal", "false");
         System.setProperty("mail.mime.parameters.strict", "false");
 
@@ -70,15 +71,10 @@ public class MainApplication extends Application {
     }
 
     public void start() {
-        SwingUtilities.invokeLater(
-                new Runnable() {
-
-                    @Override
-                    public void run() {
-                        LookAndFeelFactory.installJideExtension(LookAndFeelFactory.VSNET_STYLE_WITHOUT_MENU);
-                        mainFrame = new MainFrame(actionManager);
-                    }
-                });
+        SwingUtilities.invokeLater(() -> {
+            LookAndFeelFactory.installJideExtension(LookAndFeelFactory.VSNET_STYLE_WITHOUT_MENU);
+            mainFrame = new MainFrame(actionManager);
+        });
     }
 
     public void quit() {
@@ -91,12 +87,11 @@ public class MainApplication extends Application {
             channel.stop();
         }
 
-        label:
         for (Channel channel : mainFrame.getChannels()) {
             if (count > 0 && channel.isRunning()) {
                 count--;
                 Utils.sleep(1000);
-                break label;
+                break;
             }
         }
 

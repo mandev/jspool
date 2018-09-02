@@ -57,7 +57,7 @@ public class Unzipper {
                 out.close();
             }
             zin.close();
-            logger.info(input + " unzippé avec succès");
+            logger.info(input + " unzippe avec succes");
         }
         catch (IllegalArgumentException e) {
             try {
@@ -96,33 +96,4 @@ public class Unzipper {
             logger.warn(ifile.getPath() + " - copy error : ", e);
         }
     }
-//    public boolean unzip(String input, String output, String error) {
-//
-//        byte[] buf = new byte[1024];
-//        ZipInputStream zin = null ;
-//
-//        try {
-//            zin = new ZipInputStream(new FileInputStream(input));
-//
-//            ZipEntry entry = null ;
-//            while ( (entry = zin.getNextEntry()) != null ) {
-//                String filename = output + File.separator + entry.getName() ;
-//                File file = new File(filename) ;
-//                if ( ! file.getParentFile().exists() ) file.getParentFile().mkdirs() ;
-//                OutputStream out = new FileOutputStream(filename);
-//                logger.info("unzipping : " + filename) ;
-//                int len;
-//                while ((len = zin.read(buf)) > 0) out.write(buf, 0, len);
-//                out.close();
-//            }
-//            zin.close() ;
-//            logger.info(input + " unzippé avec succès") ;
-//        }
-//        catch (IOException e) {
-//            channel.logWarning(input + " - unzip error : ",  e) ;
-//            return false ;
-//        }
-//
-//        return true ;
-//    }
 }
