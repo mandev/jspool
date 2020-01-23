@@ -11,7 +11,6 @@ import com.adlitteram.jasmin.LocaleManager;
 import com.adlitteram.jasmin.LookManager;
 import com.adlitteram.jasmin.Message;
 import com.adlitteram.jasmin.XProp;
-import com.jidesoft.plaf.LookAndFeelFactory;
 import cz.autel.dmi.HIGConstraints;
 import cz.autel.dmi.HIGLayout;
 import java.awt.BorderLayout;
@@ -110,7 +109,6 @@ public class PrefDialog extends JDialog {
         lookCombo.setSelectedItem(XProp.get("LookAndFeel"));
         lookCombo.addActionListener((ActionEvent e) -> {
             LookManager.setLookAndFeel((String) lookCombo.getSelectedItem());
-            LookAndFeelFactory.installJideExtension(LookAndFeelFactory.VSNET_STYLE_WITHOUT_MENU);
             SwingUtilities.updateComponentTreeUI(PrefDialog.this);
         });
 

@@ -12,13 +12,9 @@ import com.adlitteram.jasmin.action.ActionManager;
 import com.adlitteram.jasmin.gui.GuiBuilder;
 import com.adlitteram.jasmin.log.XLog;
 import com.adlitteram.jasmin.utils.GuiUtils;
-import com.adlitteram.jasmin.utils.NumUtils;
 import com.adlitteram.jspool.*;
 import com.adlitteram.jspool.log.DirectHandler;
 import com.adlitteram.jspool.properties.XmlChannelReader;
-import com.jidesoft.swing.JideBoxLayout;
-import com.jidesoft.swing.JideSplitPane;
-import com.jidesoft.swing.JideTabbedPane;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -31,7 +27,6 @@ import java.util.Date;
 import java.util.Iterator;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,8 +47,8 @@ public class MainFrame extends JFrame {
     };
     //
     private GuiBuilder guiBuilder;
-    private JideSplitPane splitPane;
-    private JideTabbedPane logPane;
+    private JSplitPane splitPane;
+    private JTabbedPane logPane;
     private LogArea allLogArea;
     private DirectHandler allLogAreaHandler;
     private JTable channelTable;
@@ -159,21 +154,30 @@ public class MainFrame extends JFrame {
 
         Object insets = UIManager.get("TabbedPane.contentBorderInsets");
         UIManager.put("TabbedPane.contentBorderInsets", new Insets(0, 0, 0, 0));
-        logPane = new JideTabbedPane();
-        logPane.scrollSelectedTabToVisible(true);
+//        logPane = new JideTabbedPane();
+//        logPane.scrollSelectedTabToVisible(true);
+//        logPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+//        logPane.setBoldActiveTab(true);
+
+        logPane = new JTabbedPane();
+//        logPane.scrollSelectedTabToVisible(true);
         logPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-        logPane.setBoldActiveTab(true);
+
+        
         UIManager.put("TabbedPane.contentBorderInsets", insets);
         logPane.addTab(" * ", logScrollPane);
         //logPane.insertTab(" * ", null, logScrollPane, null, 0);
 
         //JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, channelPane, logPane);
-        splitPane = new JideSplitPane(JideSplitPane.VERTICAL_SPLIT);
-        splitPane.setProportionalLayout(true);
+        splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+//        splitPane.setProportionalLayout(true);
+//        splitPane.add(channelPane, JideBoxLayout.VARY);
+//        splitPane.add(logPane, JideBoxLayout.FLEXIBLE);
+        splitPane.setDividerLocation(300);
         splitPane.setDividerSize(5);
         splitPane.setContinuousLayout(true);
-        splitPane.add(channelPane, JideBoxLayout.VARY);
-        splitPane.add(logPane, JideBoxLayout.FLEXIBLE);
+        splitPane.add(channelPane);
+        splitPane.add(logPane);
 
         getContentPane().add(toolBar, BorderLayout.NORTH);
         getContentPane().add(splitPane, BorderLayout.CENTER);
@@ -208,11 +212,11 @@ public class MainFrame extends JFrame {
 
     public final void loadProperties() {
         GuiUtils.loadBounds(this, "MainFrame");
-        splitPane.setProportions(NumUtils.stringToDoubleArray(XProp.get("MainFrame.divider", ".8")));
+//        splitPane.setProportions(NumUtils.stringToDoubleArray(XProp.get("MainFrame.divider", ".8")));
     }
 
     public final void saveProperties() {
-        XProp.put("MainFrame.divider", NumUtils.doubleArrayToString(splitPane.getProportions()));
+//        XProp.put("MainFrame.divider", NumUtils.doubleArrayToString(splitPane.getProportions()));
         GuiUtils.saveBounds(this, "MainFrame");
     }
 

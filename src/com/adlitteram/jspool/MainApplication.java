@@ -14,7 +14,6 @@ import com.adlitteram.jasmin.action.ActionManager;
 import com.adlitteram.jasmin.log.XLog;
 import com.adlitteram.jspool.gui.MainFrame;
 import com.adlitteram.jspool.utils.PlatformUtils;
-import com.jidesoft.plaf.LookAndFeelFactory;
 import java.awt.Window;
 import java.io.File;
 import javax.swing.SwingUtilities;
@@ -72,7 +71,7 @@ public class MainApplication extends Application {
 
     public void start() {
         SwingUtilities.invokeLater(() -> {
-            LookAndFeelFactory.installJideExtension(LookAndFeelFactory.VSNET_STYLE_WITHOUT_MENU);
+//            LookAndFeelFactory.installJideExtension(LookAndFeelFactory.VSNET_STYLE_WITHOUT_MENU);
             mainFrame = new MainFrame(actionManager);
         });
     }
