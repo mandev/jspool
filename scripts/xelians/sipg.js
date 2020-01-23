@@ -35,7 +35,7 @@ function createSedaSip() {
     var filename = FilenameUtils.removeExtension(_srcFile.getName()) + ".zip";
     Sedav2Service.getInstance().serialize(archiveTransfer, Paths.get(OUTPUT_DIR + filename));
 
-    _print("Done" + )
+    _print("Done")
     return _OK;
 }
 
