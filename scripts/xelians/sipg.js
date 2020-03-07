@@ -1,17 +1,14 @@
-/* test.js
- * Emmanuel Deviller
- * 
+/* 
  * _srcDir : the spooled directory (String)
  * _srcFile : the file found (SourceFile) 
  * _exit : exit value (_OK,_FAIL,_NOP,_KEEP) 
- *
+ * 
  * Attention aux mots réservés : ex.  file.delete => file["delete"] )
  */
 
 importPackage(Packages.java.io);
 importPackage(Packages.java.nio.file);
 importPackage(Packages.org.apache.commons.io);
-importPackage(Packages.com.adlitteram.jspool);
 importPackage(Packages.com.xelians.sipg);
 importPackage(Packages.com.xelians.sipg.model);
 importPackage(Packages.com.xelians.sipg.service.sedav2);
@@ -46,6 +43,3 @@ try {
     _print(e.name + ": " + e.message + " - " + e.fileName + " [" + e.lineNumber + "]");
     _exit = _FAIL;
 }
-
-
-

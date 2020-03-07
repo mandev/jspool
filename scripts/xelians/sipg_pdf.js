@@ -24,16 +24,12 @@ TMP_DIR = "/home/manu/tmp/sipg/"
 TMP_FILE = new File(TMP_DIR)
 
 function splitPdf(pdfFile) {
-    if (pdfFile.exists() && pdfFile.isFile() && pdfFile.canRead()) {
-        FileUtils.deleteQuietly(TMP_FILE);
-        FileUtils.forceMkdir(TMP_FILE);
-        var pdfTool = new PdfTool();
-        var splitPageFilter = new SplitPage(TMP_DIR + "/{BASE}_{COUNT}.pdf", 1, "%03d");
-        pdfTool.addFilter(splitPageFilter);
-        pdfTool.execute(pdfFile);
-    } else {
-        throw {name: "processZip", message: "Le fichier " + pdfFile + " n'existe pas", fileName: "", lineNumber: ""};
-    }
+    FileUtils.deleteQuietly(TMP_FILE);
+    FileUtils.forceMkdir(TMP_FILE);
+    var pdfTool = new PdfTool();
+    var splitPageFilter = new SplitPage(TMP_DIR + "/{BASE}_{COUNT}.pdf", 1, "%03d");
+    pdfTool.addFilter(splitPageFilter);
+    pdfTool.execute(pdfFile);
 }
 
 function createSedaSip() {
@@ -71,6 +67,3 @@ try {
     _print(e.name + ": " + e.message + " - " + e.fileName + " [" + e.lineNumber + "]");
     _exit = _FAIL;
 }
-
-
-
