@@ -18,7 +18,9 @@ Features:
 
 ## Build 
  
-JSpool uses the [jasmin](https://github.com/mandev/jasmin) library. You must download and build this library before building jSpool. Java 11+ is mandatory to build jSpool. 
+JSpool uses the [jasmin](https://github.com/mandev/jasmin) library. You must download and build this library before building jSpool. 
+
+Java 11+ is required o build jSpool. 
 
 ```
 mvn clean install
