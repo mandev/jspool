@@ -18,7 +18,7 @@ Features:
 
 ## Build 
  
-Java 11+ is mandatory to build emailcruncher.
+Java 11+ is mandatory to build jSpool.
 
 ```
 mvn clean install
