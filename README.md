@@ -1,6 +1,6 @@
 # jSpool
 
-jSpool is a cross platform file spooler. 
+jSpool is a cross plateform file spooler. 
 
 Features:  
 * easy to use graphical user interface
@@ -30,7 +30,7 @@ mvn clean install
 java -jar jspool.jar
 ```
 
-Note. the name of resuting jar depends on the current application version.
+Note. the name of resulting jar depends on the current application version.
 
 ## Contribute
 
@@ -42,7 +42,7 @@ Contributions are welcome.
 4. Push the local branch (git push origin newFeature)
 5. Create a pull request
 
-## Licence
+## License
 
 jSpool is provided under GPL v3 licence.
 
