@@ -201,7 +201,7 @@
     <!-- script -->
     <property key="scriptExec.javascript" value="Javascript" />
     <property key="scriptExec.parameters" value="&lt;html&gt;Parameters&lt;br&gt;(key=value)&lt;/html&gt;" />
- 
+
     <!-- pdfdecrypt -->
     <property key="pdfdecrypt.trgdir" value="Target Directory" />
     <property key="pdfdecrypt.errordir" value="Error Directory" />

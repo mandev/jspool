@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<PdfTool>
-
-   <Impose deleteSource="false" width="450.0 mm" height="320.0 mm" type="0" destination="C:/spool/plaques/BOOK-A3_{TEMP}.pdf" >
-      <PageSlot x="16.0 mm" y="10.5 mm" folio="true" folioX="225.0 mm" folioY="314.0 mm" folioText="{FILENAME} - Page {FOLIO}" folioSize="10"/>
-      <PageMark x="0.0 mm" y="0.0 mm" size="5.0 mm" offset="0.0 mm" position="++++" thickness="0.35 mm" color="0,0,0" />
-   </Impose>
-
-</PdfTool>

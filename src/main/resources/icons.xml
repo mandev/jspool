@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<properties>
+
+    <property key="Open.ico" value="folder.png" />
+    <property key="Help.ico" value="Help2.gif" />
+
+    <property key="StartAllChannels.ico" value="/icons/VCRFastForward.gif" />
+    <property key="StopAllChannels.ico" value="/icons/VCRStop.gif" />
+    <property key="ResetLogArea.ico" value="/icons/DeleteSheet.gif" />
+    <property key="NewChannel.ico" value="/icons/New.gif" />
+    <property key="ModifyChannel.ico" value="/icons/Hammer.gif" />
+    <property key="StartChannel.ico" value="/icons/RunComp.gif" />
+    <property key="StopChannel.ico" value="/icons/StopSign.gif" />
+    <property key="UpperChannel.ico" value="/icons/MoveUp.gif" />
+    <property key="LowerChannel.ico" value="/icons/MoveDown.gif" />
+
+</properties>
+
