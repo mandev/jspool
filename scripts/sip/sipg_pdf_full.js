@@ -23,7 +23,7 @@ importPackage(Packages.com.adlitteram.pdftool.filters);
 importPackage(Packages.com.adlitteram.pdftool.utils);
 
 OUTPUT_DIR = _getValue("OUTPUT_DIR");
-TMP_DIR = "/home/manu/tmp/sipg/"
+TMP_DIR = "/home/manu/tmp/spool/stage/"
 TMP_FILE = new File(TMP_DIR)
 
 function splitPdf(pdfFile) {
@@ -35,12 +35,13 @@ function splitPdf(pdfFile) {
     pdfTool.execute(pdfFile);
 }
 
-function fullTextPdf(pdfFile) {
+function getTextPdf(pdfFile) {
     var doc = PDDocument.load(pdfFile) ;
     return new PDFTextStripper().getText(doc) ;
 }
 
 function createSedaSip() {
+    _print("Processing: " + _srcFile.getName()) ;
 
     var archiveTransfer = new ArchiveTransfer();
     archiveTransfer.setArchivalAgreement("My Archival Agreement");
@@ -55,7 +56,7 @@ function createSedaSip() {
             unit.setBinaryPath(files[i].toPath());
             unit.setBinaryVersion("BinaryMaster_1");
             unit.addTitle(files[i].getName());
-            unit.addDescription(fullTextPdf(files[i]));
+            unit.addDescription(getTextPdf(files[i]));
             archiveTransfer.addArchiveUnit(unit);
         }
     }

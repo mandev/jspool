@@ -18,30 +18,22 @@ importPackage(Packages.com.xelians.sipg.service.sedav2);
 
 OUTPUT_DIR = _getValue("OUTPUT_DIR");
 
-function createSedaSip() {
+function validatingSedaSip() {
     _print("Processing: " + _srcFile.getName()) ;
 
-    var unit = new ArchiveUnit();
-    unit.setBinaryPath(_srcFile.getFile().toPath());
-    unit.setBinaryVersion("BinaryMaster_1");
-    unit.addTitle(_srcFile.getName());
+    var input = _srcFile.getFile().toPath() ;
 
-    var archiveTransfer = new ArchiveTransfer();
-    archiveTransfer.setArchivalAgreement("My Archival Agreement");
-    archiveTransfer.setArchivalAgency("AG001", "");
-    archiveTransfer.setTransferringAgency("AG002", "");
-    archiveTransfer.addArchiveUnit(unit);
+    Sedav2Service.getInstance().validate(input);
+    
+    Files.copy(input, Paths.get(OUTPUT_DIR + _srcFile.getName()));
 
-    var filename = FilenameUtils.removeExtension(_srcFile.getName()) + ".zip";
-    Sedav2Service.getInstance().serialize(archiveTransfer, Paths.get(OUTPUT_DIR + filename));
-
-    _print("Done")
+    _print("Validate OK")
     return _OK;
 }
 
 // start & exit 
 try {
-    _exit = createSedaSip();
+    _exit = validatingSedaSip();
 } catch (e) {
     _print(e.name + ": " + e.message + " - " + e.fileName + " [" + e.lineNumber + "]");
     _exit = _FAIL;
