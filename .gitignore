@@ -87,8 +87,6 @@ nb-configuration.xml
 ######################
 **/target/
 !**/.mvn/wrapper/maven-wrapper.jar
-**/log/
-**/target/
 pom.xml.releaseBackup
 pom.xml.versionsBackup
 maven-eclipse.xml
