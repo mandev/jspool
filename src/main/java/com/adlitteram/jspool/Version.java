@@ -7,7 +7,7 @@ public class Version {
     private static final String AUTHOR = "Emmanuel Deviller";
     private static final String BUILD_NUM = "297";
     private static final String LICENCE = "Commercial";
-    private static final String VERSION_NUM = "8.01";
+    private static final String VERSION_NUM = "8.04";
     private static final String CNAME = "jSpool";
     private static final String NAME = "jSpool";
 
