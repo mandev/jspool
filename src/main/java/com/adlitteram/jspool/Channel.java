@@ -4,9 +4,6 @@ import static com.adlitteram.jasmin.Message.get;
 import static com.adlitteram.jasmin.utils.NumUtils.clamp;
 import static com.adlitteram.jspool.HandlersManager.getSourceHandlers;
 import static com.adlitteram.jspool.HandlersManager.getTargetHandlers;
-import com.adlitteram.jspool.gui.MainFrame;
-import com.adlitteram.jspool.sources.AbstractSource;
-import com.adlitteram.jspool.targets.AbstractTarget;
 import static java.lang.Boolean.parseBoolean;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -14,13 +11,16 @@ import static java.lang.Long.parseLong;
 import static java.lang.Thread.NORM_PRIORITY;
 import static java.lang.Thread.currentThread;
 import static java.lang.Thread.sleep;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
 import static java.util.logging.Level.WARNING;
+import static java.util.regex.Pattern.compile;
+
+import com.adlitteram.jspool.gui.MainFrame;
+import com.adlitteram.jspool.sources.AbstractSource;
+import com.adlitteram.jspool.targets.AbstractTarget;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import static java.util.regex.Pattern.compile;
 
 public class Channel implements Runnable {
 
@@ -52,9 +52,9 @@ public class Channel implements Runnable {
     private static final Class[] TARGET_HANDLERS = getTargetHandlers();
     private static final Logger CHANNEL_LOGGER = Logger.getAnonymousLogger();
 
-    private MainFrame frame;                       // Parent frame
+    private final MainFrame frame;                       // Parent frame
     private Thread clockThread;                    // Internal thread
-    private HashMap properties;
+    private final Map<Object, Object> properties;
     private HashMap<String, Object> contextMap;
     private int status = STOP;                     // Status of the channel
     private boolean isSleeping;
@@ -70,19 +70,15 @@ public class Channel implements Runnable {
         this(frame, null);
     }
 
-    public Channel(MainFrame frame, HashMap props) {
+    public Channel(MainFrame frame, Map<Object, Object> props) {
         this.frame = frame;
         this.contextMap = new HashMap<>();
-        this.properties = new HashMap();
+        this.properties = new HashMap<>();
 
         if (props != null) {
-            for (Iterator i = props.entrySet().iterator(); i.hasNext();) {
-                Entry entry = (Entry) i.next();
-                properties.put(entry.getKey(), entry.getValue() == null ? null : entry.getValue().toString());
-            }
+            properties.putAll(props);
             setRegexp();
         }
-
         updateHandlers();
     }
 
@@ -167,7 +163,7 @@ public class Channel implements Runnable {
     }
 
     // Properties
-    public HashMap getProperties() {
+    public Map<Object, Object> getProperties() {
         return properties;
     }
 
@@ -265,7 +261,7 @@ public class Channel implements Runnable {
     public AbstractSource getSrcHandler() {
         String className = getStringProp(SRCCLASS);
 
-        // If classname exists, take it
+        // If className exists, take it
         if (className != null) {
             for (int i = 0; i < SOURCE_HANDLERS.length; i++) {
                 if (className.equals(getSrcHandlerName(i))) {
@@ -275,7 +271,7 @@ public class Channel implements Runnable {
             }
         }
 
-        // Othewise take the srcMode
+        // Otherwise take the srcMode
         int i = clamp(0, getIntProp(SRCMODE, 0), SOURCE_HANDLERS.length - 1);
         setProperty(SRCCLASS, getSrcHandlerName(i));
         return srcHandlers[i];
@@ -284,7 +280,7 @@ public class Channel implements Runnable {
     public AbstractTarget getTrgHandler() {
         String className = getStringProp(TRGCLASS);
 
-        // If classname exists, take it
+        // If className exists, take it
         if (className != null) {
             for (int i = 0; i < TARGET_HANDLERS.length; i++) {
                 if (className.equals(getTrgHandlerName(i))) {
@@ -294,7 +290,7 @@ public class Channel implements Runnable {
             }
         }
 
-        // Othewise take the trgMode
+        // Otherwise take the trgMode
         int i = clamp(0, getIntProp(TRGMODE, 0), TARGET_HANDLERS.length - 1);
         setProperty(TRGCLASS, getTrgHandlerName(i));
         return trgHandlers[i];
@@ -312,7 +308,7 @@ public class Channel implements Runnable {
     public void start() {
         if (clockThread == null && status != DISABLE) {
             isRunning = true;
-            contextMap = new HashMap();
+            contextMap = new HashMap<>();
             clockThread = new Thread(this);
             clockThread.setPriority(NORM_PRIORITY - 1);
             clockThread.start();

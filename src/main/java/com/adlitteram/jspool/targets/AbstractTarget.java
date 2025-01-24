@@ -6,34 +6,33 @@ import com.adlitteram.jspool.files.SourceFile;
 import java.awt.Dialog;
 import javax.swing.JPanel;
 
-abstract public class AbstractTarget {
+public abstract class AbstractTarget {
 
-    public static final int OK = 0;
-    public static final int FAIL = 1;
-    public static final int NOP = 2;
-    public static final int KEEP = 3;
-    public Channel channel;
+  public static final int OK = 0;
+  public static final int FAIL = 1;
+  public static final int NOP = 2;
+  public static final int KEEP = 3;
+  public Channel channel;
 
-    public void init(Channel ch) {
-        channel = ch;
-    }
+  public void init(Channel ch) {
+    channel = ch;
+  }
 
-    public void close() {
-    }
+  public void close() {}
 
-    public String getRelease() {
-        return Version.getRELEASE();
-    }
+  public String getRelease() {
+    return Version.getRELEASE();
+  }
 
-    public String getAuthor() {
-        return Version.getAUTHOR();
-    }
+  public String getAuthor() {
+    return Version.getAUTHOR();
+  }
 
-    abstract public boolean setParameters();
+  public abstract boolean setParameters();
 
-    abstract public JPanel buildPanel(Dialog parent);
+  public abstract JPanel buildPanel(Dialog parent);
 
-    abstract public String getName();
+  public abstract String getName();
 
-    abstract public int run(String srcDir, SourceFile file);
+  public abstract int run(String srcDir, SourceFile file);
 }

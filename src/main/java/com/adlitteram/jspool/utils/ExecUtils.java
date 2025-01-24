@@ -10,50 +10,49 @@ import org.slf4j.LoggerFactory;
 
 public class ExecUtils {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ExecUtils.class);
+  private ExecUtils() {}
 
-    public static int exec(String app, String[] opts, String dir, OutputStream bos) {
-        String[] cmdArray = new String[opts.length + 1];
-        cmdArray[0] = app;
-        System.arraycopy(opts, 0, cmdArray, 1, opts.length);
+  private static final Logger LOG = LoggerFactory.getLogger(ExecUtils.class);
 
-        int status;
-        Process proc = null;
-        try {
-            proc = Runtime.getRuntime().exec(cmdArray, null, createDir(dir));
-            try (OutputStream os = proc.getOutputStream();
-                    InputStream es = proc.getErrorStream();
-                    InputStream is = proc.getInputStream()) {
+  public static int exec(String app, String[] opts, String dir, OutputStream bos) {
+    String[] cmdArray = new String[opts.length + 1];
+    cmdArray[0] = app;
+    System.arraycopy(opts, 0, cmdArray, 1, opts.length);
 
-                StreamGobbler errorGobbler = new StreamGobbler(es, bos, "ERR");
-                StreamGobbler outputGobbler = new StreamGobbler(is, bos, "OUT");
-                errorGobbler.start();
-                outputGobbler.start();
-                status = proc.waitFor();
-            }
-        }
-        catch (InterruptedException ex) {
-            status = 2;
-            LOG.warn("Error executing external application: {} - {}", app, ex.getMessage());
-        }
-        catch (IOException ex) {
-            status = 1;
-            LOG.warn("Error executing external application: {} - {}", app, ex.getMessage());
-        }
-        finally {
-            if (proc != null) {
-                proc.destroy();
-            }
-        }
+    int status;
+    Process proc = null;
+    try {
+      proc = Runtime.getRuntime().exec(cmdArray, null, createDir(dir));
+      try (OutputStream os = proc.getOutputStream();
+          InputStream es = proc.getErrorStream();
+          InputStream is = proc.getInputStream()) {
 
-        return status;
+        StreamGobbler errorGobbler = new StreamGobbler(es, bos, "ERR");
+        StreamGobbler outputGobbler = new StreamGobbler(is, bos, "OUT");
+        errorGobbler.start();
+        outputGobbler.start();
+        status = proc.waitFor();
+      }
+    } catch (InterruptedException ex) {
+      status = 2;
+      LOG.warn("Error executing external application: {} - {}", app, ex.getMessage());
+    } catch (IOException ex) {
+      status = 1;
+      LOG.warn("Error executing external application: {} - {}", app, ex.getMessage());
+    } finally {
+      if (proc != null) {
+        proc.destroy();
+      }
     }
 
-    private static File createDir(String dirname) {
-        File dirFile = new File(dirname);
-        if (!dirFile.exists()) {
-            dirFile.mkdirs();
-        }
-        return dirFile;
+    return status;
+  }
+
+  private static File createDir(String dirname) {
+    File dirFile = new File(dirname);
+    if (!dirFile.exists()) {
+      dirFile.mkdirs();
     }
+    return dirFile;
+  }
 }
