@@ -14,41 +14,41 @@ import org.slf4j.LoggerFactory;
 
 public class Unzipper {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Unzipper.class);
+  private Unzipper() {}
 
-    public static boolean unzip(String input, String output, String error) {
+  private static final Logger LOG = LoggerFactory.getLogger(Unzipper.class);
 
-        try (var fin = new FileInputStream(input);
-                var zin = new ZipInputStream(fin)) {
+  public static boolean unzip(String input, String output, String error) {
 
-            ZipEntry entry;
-            while ((entry = zin.getNextEntry()) != null) {
-                String filename = output + File.separator + entry.getName();
-                Path path = Paths.get(filename) ;
-                Files.createDirectories(path.getParent()) ;
-                LOG.info("unzipping : " + filename);
-                Files.copy(zin, path);
-            }
-            LOG.info(input + " unzippe avec succes");
-        }
-        catch (IllegalArgumentException | IOException e) {
-            LOG.warn(input + " - unzip error : ", e);
-            File ifile = new File(input);
-            File efile = new File(error, ifile.getName());
-            doError(ifile, efile);
-            return false;
-        }
+    try (var fin = new FileInputStream(input);
+        var zin = new ZipInputStream(fin)) {
 
-        return true;
+      ZipEntry entry;
+      while ((entry = zin.getNextEntry()) != null) {
+        String filename = output + File.separator + entry.getName();
+        Path path = Paths.get(filename);
+        Files.createDirectories(path.getParent());
+        LOG.info("unzipping : {}", filename);
+        Files.copy(zin, path);
+      }
+      LOG.info("{} unzippe avec succes", input);
+    } catch (IllegalArgumentException | IOException e) {
+      LOG.warn(input + " - unzip error : ", e);
+      File ifile = new File(input);
+      File efile = new File(error, ifile.getName());
+      doError(ifile, efile);
+      return false;
     }
 
-    private static void doError(File ifile, File efile) {
-        try {
-            FileUtils.copyFile(ifile, efile);
-            ifile.delete();
-        }
-        catch (IOException e) {
-            LOG.warn(ifile.getPath() + " - copy error : ", e);
-        }
+    return true;
+  }
+
+  private static void doError(File ifile, File efile) {
+    try {
+      FileUtils.copyFile(ifile, efile);
+      ifile.delete();
+    } catch (IOException e) {
+      LOG.warn(ifile.getPath() + " - copy error : ", e);
     }
+  }
 }

@@ -8,14 +8,14 @@ import javax.swing.JComponent;
 
 public class About extends XAction {
 
-    public About() {
-        super("About");
-    }
+  public About() {
+    super("About");
+  }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        MainFrame frame = (MainFrame) ((JComponent) e.getSource()).getClientProperty("REF_OBJECT");
-        AboutDialog aboutDialog = new AboutDialog(frame);
-        aboutDialog.setVisible(true);
-    }
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    MainFrame frame = (MainFrame) ((JComponent) e.getSource()).getClientProperty("REF_OBJECT");
+    AboutDialog aboutDialog = new AboutDialog(frame);
+    aboutDialog.setVisible(true);
+  }
 }
