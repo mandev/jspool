@@ -15,209 +15,212 @@ import org.slf4j.LoggerFactory;
 
 public class LocalFile extends SourceFile implements FilenameFilter {
 
-    private static final Logger LOG = LoggerFactory.getLogger(LocalFile.class);
+  private static final Logger LOG = LoggerFactory.getLogger(LocalFile.class);
 
-    public static final int SORT_ALPHA = 1;
-    public static final int SORT_ALPHA_INV = 2;
-    public static final int SORT_DATE = 3;
-    public static final int SORT_DATE_INV = 4;
+  public static final int SORT_ALPHA = 1;
+  public static final int SORT_ALPHA_INV = 2;
+  public static final int SORT_DATE = 3;
+  public static final int SORT_DATE_INV = 4;
 
-    private File file;
-    private long checksum = 0;
-    private long length = -1;
-    private Pattern regexp;	// for FilenameFilter
-    private boolean useChecksum;
+  private final File file;
+  private long checksum = 0;
+  private long length = -1;
+  private Pattern regexp; // for FilenameFilter
+  private final boolean useChecksum;
 
-    public LocalFile(File file) {
-        this(file, 0, false, SORT_NONE);
-    }
+  public LocalFile(File file) {
+    this(file, 0, false, SORT_NONE);
+  }
 
-    public LocalFile(File file, int maxStab, boolean uc, int sort) {
-        super(maxStab);
-        this.file = file;
-        useChecksum = uc;
-        sortOrder = sort;
-    }
+  public LocalFile(File file, int maxStab, boolean uc, int sort) {
+    super(maxStab);
+    this.file = file;
+    useChecksum = uc;
+    sortOrder = sort;
+  }
 
-    @Override
-    public String getPath() {
-        return file.getPath();
-    }
+  @Override
+  public String getPath() {
+    return file.getPath();
+  }
 
-    @Override
-    public File getFile() {
-        return file;
-    }
+  @Override
+  public File getFile() {
+    return file;
+  }
 
-    @Override
-    public long getLength() {
-        return file.length();
-    }
+  @Override
+  public long getLength() {
+    return file.length();
+  }
 
-    @Override
-    public long lastModified() {
-        return file.lastModified();
-    }
+  @Override
+  public long lastModified() {
+    return file.lastModified();
+  }
 
-    @Override
-    public boolean exists() {
-        return file.exists();
-    }
+  @Override
+  public boolean exists() {
+    return file.exists();
+  }
 
-    @Override
-    public boolean canRead() {
-        return file.canRead();
-    }
+  @Override
+  public boolean canRead() {
+    return file.canRead();
+  }
 
-    @Override
-    public boolean canWrite() {
-        return file.canWrite();
-    }
+  @Override
+  public boolean canWrite() {
+    return file.canWrite();
+  }
 
-    @Override
-    public String getName() {
-        return file.getName();
-    }
+  @Override
+  public String getName() {
+    return file.getName();
+  }
 
-    @Override
-    public boolean delete() {
-        for (int j = 0; j < 5; j++) {
-            if (file.delete()) {
-                return true;
-            }
-            LOG.info("Error deleting file: " + file.getPath());
-            System.gc();
-            Utils.sleep(1000L);
-        }
-        return false;
-    }
-
-    @Override
-    public boolean close() {
+  @Override
+  public boolean delete() {
+    for (int j = 0; j < 5; j++) {
+      if (file.delete()) {
         return true;
+      }
+      LOG.info("Error deleting file: {}", file.getPath());
+      System.gc();
+      Utils.sleep(1000L);
+    }
+    return false;
+  }
+
+  @Override
+  public boolean close() {
+    return true;
+  }
+
+  @Override
+  public void init(long newLength) {
+    length = newLength;
+    if (useChecksum) {
+      checksum = computeChecksum();
+    }
+  }
+
+  @Override
+  public void process(long newLength) {
+    try {
+      // Check if readable
+      (new FileInputStream(file)).close();
+    } catch (IOException ex) {
+      return;
     }
 
-    @Override
-    public void init(long newLength) {
-        length = newLength;
-        if (useChecksum) {
-            checksum = computeChecksum();
-        }
+    if (newLength != length) {
+      length = newLength;
+      stability = 0;
+      return;
     }
 
-    @Override
-    public void process(long newLength) {
-        try {
-            // Check if readable
-            (new FileInputStream(file)).close();
-        }
-        catch (IOException ex) {
-            return;
-        }
-
-        if (newLength != length) {
-            length = newLength;
-            stability = 0;
-            return;
-        }
-
-        if (useChecksum) {
-            long cs = computeChecksum();
-            if (cs != checksum) {
-                checksum = cs;
-                stability = 0;
-                return;
-            }
-        }
-
-        stability++;
+    if (useChecksum) {
+      long cs = computeChecksum();
+      if (cs != checksum) {
+        checksum = cs;
+        stability = 0;
+        return;
+      }
     }
 
-    // Compute an adler checksum on the file
-    private long computeChecksum() {
-        Adler32 inChecker = new Adler32();
-        byte[] data = new byte[2048];
+    stability++;
+  }
 
-        try (var fis = new FileInputStream(file);
-                var cin = new CheckedInputStream(fis, inChecker)) {
-            while (cin.read(data, 0, data.length) != -1);
-        }
-        catch (IOException ex) {
-            ex.printStackTrace();
-        }
+  // Compute an adler checksum on the file
+  private long computeChecksum() {
+    Adler32 inChecker = new Adler32();
+    byte[] data = new byte[2048];
 
-        return inChecker.getValue();
+    try (var fis = new FileInputStream(file);
+        var cin = new CheckedInputStream(fis, inChecker)) {
+      while (cin.read(data, 0, data.length) != -1)
+        ;
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
 
-    @Override
-    public boolean isDirectory() {
-        return file.isDirectory();
+    return inChecker.getValue();
+  }
+
+  @Override
+  public boolean isDirectory() {
+    return file.isDirectory();
+  }
+
+  @Override
+  public SourceFile[] listFiles(Pattern regexp) {
+    this.regexp = regexp;
+    File[] files = file.listFiles(this);
+    LocalFile[] lf = new LocalFile[files.length];
+    for (int i = 0; i < files.length; i++) {
+      lf[i] = new LocalFile(files[i], maxStability, useChecksum, sortOrder);
+    }
+    switch (sortOrder) {
+      case SORT_ALPHA:
+        Arrays.sort(lf, alphaSort);
+        break;
+      case SORT_ALPHA_INV:
+        Arrays.sort(lf, alphaInvSort);
+        break;
+      case SORT_DATE:
+        Arrays.sort(lf, dateSort);
+        break;
+      case SORT_DATE_INV:
+        Arrays.sort(lf, dateInvSort);
+        break;
     }
 
-    @Override
-    public SourceFile[] listFiles(Pattern regexp) {
-        this.regexp = regexp;
-        File[] files = file.listFiles(this);
-        LocalFile[] lf = new LocalFile[files.length];
-        for (int i = 0; i < files.length; i++) {
-            lf[i] = new LocalFile(files[i], maxStability, useChecksum, sortOrder);
-        }
-        switch (sortOrder) {
-            case SORT_ALPHA:
-                Arrays.sort(lf, alphaSort);
-                break;
-            case SORT_ALPHA_INV:
-                Arrays.sort(lf, alphaInvSort);
-                break;
-            case SORT_DATE:
-                Arrays.sort(lf, dateSort);
-                break;
-            case SORT_DATE_INV:
-                Arrays.sort(lf, dateInvSort);
-                break;
-        }
+    return lf;
+  }
 
-        return lf;
-    }
-
-    // Alphabetical Comparator
-    public final static Comparator alphaSort = (Comparator) (Object a, Object b) -> {
-        String sa = ((LocalFile) a).getName();
-        String sb = ((LocalFile) b).getName();
+  // Alphabetical Comparator
+  public static final Comparator<LocalFile> alphaSort =
+      (LocalFile a, LocalFile b) -> {
+        String sa = a.getName();
+        String sb = b.getName();
         return sa.compareToIgnoreCase(sb);
-    };
+      };
 
-    // Reverse Alphabetical Comparator
-    public final static Comparator alphaInvSort = (Comparator) (Object a, Object b) -> {
-        String sa = ((LocalFile) a).getName();
-        String sb = ((LocalFile) b).getName();
+  // Reverse Alphabetical Comparator
+  public static final Comparator<LocalFile> alphaInvSort =
+      (LocalFile a, LocalFile b) -> {
+        String sa = a.getName();
+        String sb = b.getName();
         return -sa.compareToIgnoreCase(sb);
-    };
+      };
 
-    // Date Comparator
-    public final static Comparator dateSort = (Comparator) (Object a, Object b) -> {
-        long sa = ((LocalFile) a).lastModified();
-        long sb = ((LocalFile) b).lastModified();
+  // Date Comparator
+  public static final Comparator<LocalFile> dateSort =
+      (LocalFile a, LocalFile b) -> {
+        long sa = a.lastModified();
+        long sb = b.lastModified();
         return (int) (sa - sb);
-    };
+      };
 
-    // Reverse Date Comparator
-    public final static Comparator dateInvSort = (Comparator) (Object a, Object b) -> {
-        long sa = ((LocalFile) a).lastModified();
-        long sb = ((LocalFile) b).lastModified();
+  // Reverse Date Comparator
+  public static final Comparator<LocalFile> dateInvSort =
+      (LocalFile a, LocalFile b) -> {
+        long sa = a.lastModified();
+        long sb = b.lastModified();
         return (int) (sb - sa);
-    };
+      };
 
-    // Tests if a specified file should be included in a file list. (filenameFilter)
-    @Override
-    public boolean accept(File dir, String name) {
-        if (regexp == null) {
-            return true;
-        }
-        File nfile = new File(dir, name);
-        if (nfile.isDirectory()) {
-            return true;
-        }
-        return regexp.matcher(name).matches();
+  // Tests if a specified file should be included in a file list. (filenameFilter)
+  @Override
+  public boolean accept(File dir, String name) {
+    if (regexp == null) {
+      return true;
     }
+    File nfile = new File(dir, name);
+    if (nfile.isDirectory()) {
+      return true;
+    }
+    return regexp.matcher(name).matches();
+  }
 }

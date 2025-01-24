@@ -4,10 +4,9 @@ import java.util.logging.LogRecord;
 
 public interface LogWriter {
 
-    public void write(LogRecord record);
+  void write(LogRecord logRecord);
 
-    public void close();
+  void close();
 
-    public void flush();
-
+  void flush();
 }

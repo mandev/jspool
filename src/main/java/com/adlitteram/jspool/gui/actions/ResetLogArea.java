@@ -7,13 +7,13 @@ import javax.swing.JComponent;
 
 public class ResetLogArea extends XAction {
 
-    public ResetLogArea() {
-        super("ResetLogArea");
-    }
+  public ResetLogArea() {
+    super("ResetLogArea");
+  }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        MainFrame frame = (MainFrame) ((JComponent) e.getSource()).getClientProperty("REF_OBJECT");
-        frame.resetLogArea();
-    }
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    MainFrame frame = (MainFrame) ((JComponent) e.getSource()).getClientProperty("REF_OBJECT");
+    frame.resetLogArea();
+  }
 }

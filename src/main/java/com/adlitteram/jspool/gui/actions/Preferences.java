@@ -8,14 +8,14 @@ import javax.swing.JComponent;
 
 public class Preferences extends XAction {
 
-    public Preferences() {
-        super("Preferences");
-    }
+  public Preferences() {
+    super("Preferences");
+  }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        MainFrame frame = (MainFrame) ((JComponent) e.getSource()).getClientProperty("REF_OBJECT");
-        new PrefDialog(frame);
-        frame.repaint();
-    }
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    MainFrame frame = (MainFrame) ((JComponent) e.getSource()).getClientProperty("REF_OBJECT");
+    new PrefDialog(frame);
+    frame.repaint();
+  }
 }

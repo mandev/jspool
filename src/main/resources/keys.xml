@@ -5,24 +5,24 @@
     <!-- ============================================================ -->
     <!-- FILES MENU SHORTCUTS                                          -->
     <!-- ============================================================ -->
-    <property key="StartAllChannels.key" value="control T" />
-    <property key="StopAllChannels.key" value="control G" />
-    <property key="ResetLogArea.key" value="control E" />
-    <property key="quit.key" value="Control Q" />
+    <property key="StartAllChannels.key" value="control T"/>
+    <property key="StopAllChannels.key" value="control G"/>
+    <property key="ResetLogArea.key" value="control E"/>
+    <property key="quit.key" value="Control Q"/>
 
     <!-- ============================================================ -->
     <!-- CHANNEL MENU SHORTCUTS                                          -->
     <!-- ============================================================ -->
-    <property key="NewChannel.key" value="control N" />
-    <property key="ModifyChannel.key" value="control M" />
-    <property key="StartChannel.key" value="control B" />
-    <property key="StopChannel.key" value="control L" />
+    <property key="NewChannel.key" value="control N"/>
+    <property key="ModifyChannel.key" value="control M"/>
+    <property key="StartChannel.key" value="control B"/>
+    <property key="StopChannel.key" value="control L"/>
 
     <!-- ============================================================ -->
     <!-- MENU SHORTCUTS                                               -->
     <!-- ============================================================ -->
-    <property key="About.key" value="F1" />
-    <property key="AboutPlugins.key" value="F2" />
+    <property key="About.key" value="F1"/>
+    <property key="AboutPlugins.key" value="F2"/>
 
 </xproperties>
 
